@@ -73,12 +73,12 @@
 <main id="board"><div class="empty">Loading the latest board…</div></main>
 
 <footer>
-  Auto-refreshes every 30s · Datagolf finish model vs FanDuel group-winner odds<br>
+  Auto-refreshes every 15s · Datagolf finish model vs FanDuel group-winner odds<br>
   A flagged edge is a prompt to look, not an auto-bet — confirm the price before you bet.
 </footer>
 
 <script>
-const REFRESH_MS = 30000;
+const REFRESH_MS = 15000;
 let lastEpoch = null, lastAbs = '';        // set on each successful fetch
 
 function amOdds(n){ n = Math.round(n); return (n>0?"+":"") + n; }
