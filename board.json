@@ -1,10 +1,7 @@
 {
  "event": "3M Open 2026",
- "updated": "2026-07-26 10:42",
- "cut": {
-  "level": -3,
-  "moved": false
- },
+ "updated": "2026-07-26 10:45",
+ "cut": null,
  "rows": [
   {
    "group": "E",
