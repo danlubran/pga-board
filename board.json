@@ -1,12 +1,26 @@
 {
  "event": "3M Open 2026",
- "updated": "2026-07-26 11:22:41",
- "generated_epoch": 1785079362.8203285,
+ "updated": "2026-07-26 11:23:20",
+ "generated_epoch": 1785079401.7338963,
  "cut": {
   "level": -3,
   "moved": false
  },
  "rows": [
+  {
+   "group": "B",
+   "player": "Keith Mitchell",
+   "odds": 2500,
+   "decimal": 26.0,
+   "dg_win_pct": 8.0,
+   "fair_implied_pct": 3.6,
+   "edge_pts": 4.5,
+   "make_cut_pct": 100.0,
+   "bubble": false,
+   "book_hold_pct": 7.1,
+   "ev_pct": 109.1,
+   "tier": "VALUE"
+  },
   {
    "group": "E",
    "player": "Rasmus Neergaard-Petersen",
@@ -26,28 +40,14 @@
    "player": "Scottie Scheffler",
    "odds": 500,
    "decimal": 6.0,
-   "dg_win_pct": 17.0,
+   "dg_win_pct": 16.9,
    "fair_implied_pct": 15.5,
-   "edge_pts": 1.5,
+   "edge_pts": 1.4,
    "make_cut_pct": 100.0,
    "bubble": false,
-   "book_hold_pct": 7.8,
-   "ev_pct": 1.7,
+   "book_hold_pct": 7.3,
+   "ev_pct": 1.5,
    "tier": "VALUE"
-  },
-  {
-   "group": "B",
-   "player": "Hideki Matsuyama",
-   "odds": -600,
-   "decimal": 1.167,
-   "dg_win_pct": 84.4,
-   "fair_implied_pct": 83.0,
-   "edge_pts": 1.3,
-   "make_cut_pct": 100.0,
-   "bubble": false,
-   "book_hold_pct": 3.3,
-   "ev_pct": -1.6,
-   "tier": "LEAN"
   },
   {
    "group": "F",
@@ -107,16 +107,44 @@
   },
   {
    "group": "A",
+   "player": "Kurt Kitayama",
+   "odds": 15000,
+   "decimal": 151.0,
+   "dg_win_pct": 0.6,
+   "fair_implied_pct": 0.6,
+   "edge_pts": -0.0,
+   "make_cut_pct": 100.0,
+   "bubble": false,
+   "book_hold_pct": 7.3,
+   "ev_pct": -8.0,
+   "tier": ""
+  },
+  {
+   "group": "A",
    "player": "Jackson Koivun",
    "odds": -900,
    "decimal": 1.111,
-   "dg_win_pct": 82.4,
-   "fair_implied_pct": 83.5,
-   "edge_pts": -1.0,
+   "dg_win_pct": 82.5,
+   "fair_implied_pct": 83.9,
+   "edge_pts": -1.4,
    "make_cut_pct": 100.0,
    "bubble": false,
-   "book_hold_pct": 7.8,
+   "book_hold_pct": 7.3,
    "ev_pct": -8.4,
+   "tier": ""
+  },
+  {
+   "group": "B",
+   "player": "Hideki Matsuyama",
+   "odds": -600,
+   "decimal": 1.167,
+   "dg_win_pct": 78.4,
+   "fair_implied_pct": 80.0,
+   "edge_pts": -1.7,
+   "make_cut_pct": 100.0,
+   "bubble": false,
+   "book_hold_pct": 7.1,
+   "ev_pct": -8.6,
    "tier": ""
   },
   {
@@ -134,34 +162,6 @@
    "tier": ""
   },
   {
-   "group": "A",
-   "player": "Kurt Kitayama",
-   "odds": 15000,
-   "decimal": 151.0,
-   "dg_win_pct": 0.6,
-   "fair_implied_pct": 0.6,
-   "edge_pts": -0.0,
-   "make_cut_pct": 100.0,
-   "bubble": false,
-   "book_hold_pct": 7.8,
-   "ev_pct": -10.8,
-   "tier": ""
-  },
-  {
-   "group": "B",
-   "player": "Tom Kim",
-   "odds": 470,
-   "decimal": 5.7,
-   "dg_win_pct": 15.6,
-   "fair_implied_pct": 17.0,
-   "edge_pts": -1.3,
-   "make_cut_pct": 100.0,
-   "bubble": false,
-   "book_hold_pct": 3.3,
-   "ev_pct": -10.8,
-   "tier": ""
-  },
-  {
    "group": "F",
    "player": "Seamus Power",
    "odds": 340,
@@ -176,17 +176,17 @@
    "tier": ""
   },
   {
-   "group": "A",
-   "player": "Jake Knapp",
-   "odds": 20000,
-   "decimal": 201.0,
-   "dg_win_pct": 0.0,
-   "fair_implied_pct": 0.5,
-   "edge_pts": -0.4,
+   "group": "B",
+   "player": "Tom Kim",
+   "odds": 470,
+   "decimal": 5.7,
+   "dg_win_pct": 13.6,
+   "fair_implied_pct": 16.4,
+   "edge_pts": -2.8,
    "make_cut_pct": 100.0,
    "bubble": false,
-   "book_hold_pct": 7.8,
-   "ev_pct": -96.4,
+   "book_hold_pct": 7.1,
+   "ev_pct": -22.5,
    "tier": ""
   }
  ]
