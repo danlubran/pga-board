@@ -31,6 +31,9 @@
   .sub{color:var(--muted); font-size:12.5px; display:flex; gap:8px; align-items:center; flex-wrap:wrap}
   .dot{width:8px; height:8px; border-radius:50%; background:var(--value); display:inline-block;
     box-shadow:0 0 0 0 rgba(55,214,122,.5); animation:pulse 2s infinite}
+  .dot.stale{background:var(--lean); animation:none}
+  .dot.old{background:var(--neg); animation:none}
+  #updated.stale{color:var(--lean)} #updated.old{color:var(--neg)}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(55,214,122,.45)}70%{box-shadow:0 0 0 7px rgba(55,214,122,0)}100%{box-shadow:0 0 0 0 rgba(55,214,122,0)}}
   .cut{color:var(--muted); font-size:12.5px}
   .cut.moved{color:var(--lean); font-weight:600}
@@ -76,8 +79,32 @@
 
 <script>
 const REFRESH_MS = 30000;
+let lastEpoch = null, lastAbs = '';        // set on each successful fetch
 
 function amOdds(n){ n = Math.round(n); return (n>0?"+":"") + n; }
+
+function fmtAgo(sec){
+  sec = Math.max(0, Math.round(sec));
+  if(sec < 10) return 'just now';
+  if(sec < 60) return sec + 's ago';
+  const m = Math.floor(sec/60), s = sec%60;
+  if(m < 60) return s ? `${m}m ${s}s ago` : `${m}m ago`;
+  const h = Math.floor(m/60);
+  return `${h}h ${m%60}m ago`;
+}
+
+// Tick the relative time every second, and color it by staleness so you can see
+// at a glance how far behind the data is: green < 4 min, amber 4-8, red > 8.
+function tick(){
+  const up = document.getElementById('updated'), dot = document.getElementById('dot');
+  if(lastEpoch == null){ up.textContent = 'loading…'; return; }
+  const age = Date.now()/1000 - lastEpoch;
+  up.textContent = 'updated ' + fmtAgo(age);
+  up.title = lastAbs;                        // absolute time on hover
+  const cls = age < 240 ? '' : age < 480 ? 'stale' : 'old';
+  up.className = cls; dot.className = 'dot ' + cls;
+}
+setInterval(tick, 1000);
 
 function card(r, cls){
   const ev = (r.ev_pct>=0?"pos":"neg");
@@ -99,7 +126,9 @@ function card(r, cls){
 
 function render(d){
   document.getElementById('event').textContent = (d.event || 'PGA') + ' — Live Board';
-  document.getElementById('updated').textContent = 'Updated ' + (d.updated || '—');
+  lastEpoch = (typeof d.generated_epoch === 'number') ? d.generated_epoch : null;
+  lastAbs = d.updated || '';
+  tick();                                    // refresh the relative time immediately
   const cutEl = document.getElementById('cut');
   if(d.cut && d.cut.level!=null){
     cutEl.textContent = '· Cut ' + d.cut.level + (d.cut.moved ? ' (moved)' : '');
@@ -132,10 +161,9 @@ async function load(){
     const res = await fetch('board.json?t=' + Date.now(), {cache:'no-store'});
     if(!res.ok) throw new Error('HTTP ' + res.status);
     render(await res.json());
-    document.getElementById('dot').style.background = 'var(--value)';
   }catch(e){
-    document.getElementById('dot').style.background = 'var(--neg)';
-    document.getElementById('updated').textContent = 'Reconnecting…';
+    // Keep showing the last board + its (now growing) relative age, so a fetch
+    // blip doesn't blank the screen; tick() will color it stale/old on its own.
     if(!document.querySelector('.card')){
       document.getElementById('board').innerHTML =
         '<div class="err">Waiting for the first board to publish…</div>';
